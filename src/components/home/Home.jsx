@@ -11,7 +11,6 @@ import axios from "axios";
 import "./Home.css";
 
 export default function Home() {
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -25,17 +24,16 @@ export default function Home() {
     <div className="home">
       {products.map((product, i) => {
         return (
-          <Card  key={i} sx={{ maxWidth: 345 }}>
+          <Card key={i} sx={{ maxWidth: 345 }}>
             <CardActionArea>
               <Link to={`/products/${product.id}`}>
-              <CardMedia
-                component="img"
-                height="100%"
-                width="100%"
-                
-                alt="green iguana"
-                image={product.image}
-              />
+                <CardMedia
+                  component="img"
+                  height="100%"
+                  width="100%"
+                  alt="green iguana"
+                  image={product.image}
+                />
               </Link>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

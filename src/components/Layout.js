@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from "./navbar/Navbar"
 import Header from "./header/Header"
-import UseCardHome from '../redux/UseCardHome'
+import Home from "./home/Home"
 export default function Layout() {
   return (
     <>
     <Navbar/>
     <Header/>
-    <UseCardHome/>
+    <Home/>
     </>
   )
 }

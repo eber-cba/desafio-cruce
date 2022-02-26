@@ -23,13 +23,14 @@ export default function Header() {
           <label className="labelFiltrar">Filtrar</label>
         </div>
         <div>
-          <select name="select">
-            <option value="value1">Value 1</option>
-            <option value="value2" selected>
-              Value 2
-            </option>
-            <option value="value3">Value 3</option>
-          </select>
+        <select defaultValue={'DEFAULT'} >
+        <option value="DEFAULT" disabled>Choose a salutation ...</option>
+        <option value="1">Mr</option>
+        <option value="2">Mrs</option>
+        <option value="3">Ms</option>
+        <option value="4">Miss</option>
+        <option value="5">Dr</option>
+      </select>
         </div>
       </div>
     </div>

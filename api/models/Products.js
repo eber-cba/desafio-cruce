@@ -6,15 +6,14 @@ Products.init(
   {
     name: {
       type: Sequelize.STRING,
-      required: true,
-    },
+     },
     price: {
       type: Sequelize.INTEGER,
-      required: true,
+      
     },
     image: {
       type: Sequelize.STRING,
-      required: true,
+      
     },
   },
   { sequelize: db, modelName: "products" }
