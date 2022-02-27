@@ -1,0 +1,17 @@
+.CardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  height: 100%  !important ;
+  flex-grow: 1;
+  
+  
+}
+
+
+.padreGrid{
+
+  height: 100%;
+  flex-grow: 1;
+
+}

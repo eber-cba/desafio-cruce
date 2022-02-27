@@ -4,32 +4,43 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router";
-import { useState, useEffect,useLayoutEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { CardActionArea } from "@mui/material";
 import "./Product.css";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useDispatch, useSelector } from "react-redux";
-import { CustomHook } from "../../Hook/CustomHook";
-import { updateProduct } from "../../redux/Products";
-import { getProduct } from "../../redux/Products";
+import { CustomHook } from "../../../Hook/CustomHook";
+import { updateProduct,deleteProduct,getProduct } from "../../../redux/Products";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function () {
   const producto = useSelector((state) => state.products);
-  const name = CustomHook(producto.name);
-  const price = CustomHook(producto.price);
-  const image = CustomHook(producto.price);
 
+
+  const initialForm ={
+    price: producto.price,
+    name: producto.name,
+    image: producto.image
+
+  }
+
+
+  const name = CustomHook(initialForm.name);
+  const price = CustomHook(initialForm.price);
+  const image = CustomHook(initialForm.image);
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const Product = useParams().id;
 
- 
   useEffect(() => {
     dispatch(getProduct({ Product }))
       .then(({ payload }) => payload)
       .catch((err) => console.log(err));
-  },[producto] );
+  }, []);
   let form = {
     name: name.value,
     price: parseInt(price.value),
@@ -46,6 +57,18 @@ export default function () {
       .then(alert("se guardo bien esperemos.."))
       .catch((error) => console.log(error));
   };
+  const deleteProduc=(e)=>{
+    e.preventDefault();
+   dispatch(
+     deleteProduct({
+       id: producto.id,
+        
+     })
+   )
+     .then(alert("borrado."))
+     .then(navigate("/"))
+     .catch((error) => console.log(error));
+ };
   return (
     <div className="padre">
       <div id="contenedor">
@@ -73,7 +96,12 @@ export default function () {
         </div>
         <form onSubmit={handleSubmit} className="form">
           <div>
-            <TextField name= "name" id="standard-basic" variant="standard" {...name} />
+            <TextField
+              name="name"
+              id="standard-basic"
+              variant="standard"
+              {...name}
+            />
           </div>
           <div>
             <TextField
@@ -101,6 +129,9 @@ export default function () {
           <div>
             <Button type="submit" variant="outlined">
               Guardar
+            </Button>
+            <Button onClick={deleteProduc}  variant="outlined">
+              Eliminar
             </Button>
           </div>
         </form>

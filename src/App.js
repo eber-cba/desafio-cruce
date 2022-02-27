@@ -1,6 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import Layout from "./components/Layout";
-import OneProduct from "./commons/home/OneProduct";
+import OneProduct from "./commons/home/oneProduct/OneProduct";
 import CreateProduct from "./commons/createProduct/CreateProduct";
 
 function App() {
