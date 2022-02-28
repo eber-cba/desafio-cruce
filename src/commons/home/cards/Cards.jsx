@@ -12,12 +12,16 @@ import "./Cards.css";
 
 export default function Cards() {
   const [products, setProducts] = useState([]);
+  const [state, setState] = useState({});
 
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
+    return () => {
+      setState({}); // This worked for me
+    };
   }, [products]);
 
   return (
@@ -25,25 +29,30 @@ export default function Cards() {
       <div className="CardGrid">
         {products.map((product, i) => {
           return (
-            <div key={i}>
-              <Card style={{ height: '100%' }}>
-                <CardActionArea>
+            <div  key={i}>
+              <Card  style={{ height: "100%" }} >
+                <CardActionArea
+                className="cardActionArea"
+                   
+                >
                   <Link to={`/products/${product.id}`}>
                     <CardMedia
                       className="CardImage"
-                      component="img"
-                      height="100%"
-                      width="100%"
+                      component="img"                       
                       alt="cards"
                       image={product.image}
                     />
                   </Link>
                   <CardContent>
+                    <label> Funko </label>
                     <Typography gutterBottom variant="h5" component="div">
-                      {product.name}
+                      Funko POP | {product.name}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {product.price}
+                     5 cuotas de 
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary">
+                      Precio: ${product.price}
                     </Typography>
                   </CardContent>
                 </CardActionArea>

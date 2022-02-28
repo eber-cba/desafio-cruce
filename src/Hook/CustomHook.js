@@ -1,11 +1,14 @@
-import React from 'react'
+import { useState, useEffect } from "react";
 
-export function CustomHook(initialState) {
-    const [value, setValue] = React.useState(initialState);
+ 
+export const CustomHook = (name, defaultValues) => {
+  const [value, setValue] = useState("");
+   
+const defaultValue=defaultValues
+  const onChange = ({ target: { value } }) => setValue(value);
+  useEffect(() => {
+    setValue(defaultValues ? defaultValues : '');
+  }, [defaultValues]);
+  return { defaultValue,value, onChange, name };
 
-    const onChange = (e) => {
-      setValue(e.target.value);
-    };
-  
-    return { value, onChange }
-}
+};

@@ -18,9 +18,9 @@ export const createProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
   "UPDATE_PRODUCT",
-  ({ id, form }) => {
+  ({ id, name,price,image  }) => {
     return axios
-      .put(`http://localhost:8080/api/products/${id}`, form)
+      .put(`http://localhost:8080/api/products/${id}`,{name,price,image} )
       .then((res) => res.data)
       .catch((err) => console.log(err));
   }
@@ -53,7 +53,7 @@ const productsReducer = createReducer([], {
   [setProducts]: (state, action) => (state = action.payload),
   [createProduct.fulfilled]: (state, action) => action.payload,
   [updateProduct.fulfilled]: (state, action) => action.payload,
-  [getProduct.fulfilled]: (state, action) => (state = action.payload),
+  [getProduct.fulfilled]: (state, action) => action.payload,
   [deleteProduct.fulfilled]: (state, action) => action.payload,
   [getAllProduct.fulfilled]: (state, action) => action.payload,
 });

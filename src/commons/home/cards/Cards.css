@@ -1,14 +1,23 @@
 .CardGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  height: 100%  !important ;
-  flex-grow: 1;
+  grid-gap: 10px;   
   
   
 }
+.cardActionArea{
+  display: block;  
+  width: 100%;  
+   background-color: aqua ;
+   
+    
+}
 
+.CardImage{
+  
+  height: 0,
 
+}
 .padreGrid{
 
   height: 100%;
