@@ -3,8 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import { useSelector } from "react-redux";
+import { CardActionArea } from "@mui/material"; 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -22,7 +21,7 @@ export default function Cards() {
     return () => {
       setState({}); // This worked for me
     };
-  }, [products]);
+  }, []);
 
   return (
     <div className="padreGrid">
@@ -43,7 +42,7 @@ export default function Cards() {
                       image={product.image}
                     />
                   </Link>
-                  <CardContent>
+                  <CardContent className="card-content">
                     <label> Funko </label>
                     <Typography gutterBottom variant="h5" component="div">
                       Funko POP | {product.name}
@@ -61,7 +60,7 @@ export default function Cards() {
           );
         })}
       </div>
-      <div className="pagination"></div>
+       
     </div>
   );
 }

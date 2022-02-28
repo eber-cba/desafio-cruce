@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className="header">
       <div className="contenedor">
-        <div className="botones">
+        <div className="divLinks">
           <Link href="#" underline="none">
             Inicio
           </Link>
@@ -19,18 +19,21 @@ export default function Header() {
             Funko Pop
           </Link>
         </div>
-        <div>
+        <div className="divFiltrar">
           <label className="labelFiltrar">Filtrar</label>
         </div>
-        <div>
-        <select defaultValue={'DEFAULT'} >
-        <option value="DEFAULT" disabled>Choose a salutation ...</option>
+        <div className="divOrdenarPor">
+        <select className="ordenarPor" defaultValue={'DEFAULT'} >
+        <option value="DEFAULT" disabled>Ordenar por</option>
         <option value="1">Mr</option>
         <option value="2">Mrs</option>
         <option value="3">Ms</option>
         <option value="4">Miss</option>
         <option value="5">Dr</option>
       </select>
+        </div>
+        <div clasName="contenedor-portada">
+          <img src="/portada.png" alt="portada" className="imgPortada"/>
         </div>
       </div>
     </div>

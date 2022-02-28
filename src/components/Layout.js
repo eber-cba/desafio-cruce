@@ -1,16 +1,12 @@
-import React from 'react'
-import Navbar from "./navbar/Navbar"
-import Header from "./header/Header"
-import Home from "./home/Home"
- export default function Layout() {
-  
+import React from "react";
 
+import Header from "./header/Header";
+import Home from "./home/Home";
+export default function Layout() {
   return (
     <>
-    <Navbar/>
-    <Header/>
-    <Home/>
-   
+      <Header />
+      <Home />
     </>
-  )
+  );
 }

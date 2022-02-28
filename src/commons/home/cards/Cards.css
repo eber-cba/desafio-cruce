@@ -1,26 +1,47 @@
 .CardGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;   
+  grid-gap: 15px;   
+  padding: 4%;
   
   
 }
 .cardActionArea{
   display: block;  
   width: 100%;  
-   background-color: aqua ;
-   
+   background-color: aqua ;   
     
 }
 
-.CardImage{
-  
-  height: 0,
 
-}
 .padreGrid{
 
   height: 100%;
   flex-grow: 1;
 
+}
+@media (max-width: 700px) {
+  .CardGrid{
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(auto-fit);
+    width: 100%;
+    padding: 3%;
+    margin: 0;
+   
+  }
+   
+  .card-content{
+ 
+   left: 4rem;
+   position: relative;
+   width: 50%;
+   margin-left: 7rem;
+  
+  }
+  .CardImage{
+    max-width: 35%;
+   position: absolute;
+    
+   
+  }
 }
