@@ -1,4 +1,3 @@
-import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -7,18 +6,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
-
 import { useDispatch, useSelector } from "react-redux";
+import { useInput } from "../../Hook/useInput";
+import { createProduct, getAllProduct, getProduct } from "../../redux/Products";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router";
 
-import { CustomHook } from "../../Hook/CustomHook";
-import { createProduct } from "../../redux/Products";
 import "./CreateProduct.css";
 export default function CreateProduct() {
   const dispatch = useDispatch();
 
-  const name = CustomHook();
-  const price = CustomHook();
-  const image = CustomHook();
+  const name = useInput();
+  const price = useInput();
+  const image = useInput();
 
   let form = {
     name: name.value,
@@ -34,6 +35,7 @@ export default function CreateProduct() {
       })
     )
       .then(alert("Producto creado"))
+
       .catch((error) => console.log(error));
   };
 
@@ -47,7 +49,11 @@ export default function CreateProduct() {
               height="100%"
               width="100%"
               alt="card"
-              image={!image.value?"http://via.placeholder.com/150x150":image.value}
+              image={
+                !image.value
+                  ? "http://via.placeholder.com/150x150"
+                  : image.value
+              }
             />
 
             <CardContent>

@@ -32,7 +32,7 @@ export default function Header() {
         <option value="5">Dr</option>
       </select>
         </div>
-        <div clasName="contenedor-portada">
+        <div className="contenedor-portada">
           <img src="/portada.png" alt="portada" className="imgPortada"/>
         </div>
       </div>

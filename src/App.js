@@ -2,7 +2,7 @@ import { Routes, Route, NavLink } from "react-router-dom";
 import Layout from "./components/Layout";
 import Product from "./commons/home/oneProduct/OneProduct";
 import CreateProduct from "./commons/createProduct/CreateProduct";
-
+import "./App.css"
 function App() {
   return (
     <div>

@@ -1,0 +1,10 @@
+ .divPadreNavbar{
+     width: 100%;
+     height: 14vh;      
+ }
+ 
+.contenedor-navbar{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
