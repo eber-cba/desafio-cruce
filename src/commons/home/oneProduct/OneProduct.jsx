@@ -18,10 +18,9 @@ import {
   getProduct,
 } from "../../../redux/Products";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import Skeleton from "@mui/material/Skeleton";
 
 const Product = () => {
-  const [product, setProduct] = useState({});
   const [state, setState] = useState({});
 
   const navigate = useNavigate();
@@ -70,13 +69,21 @@ const Product = () => {
       <div className="divGridCard">
         <Card style={{ height: "100%" }}>
           <CardActionArea>
-            <CardMedia
-              component="img"
-              height="100%"
-              width="100%"
-              alt="card"
-              image={producto.image}
-            />
+            {!producto.image ? (
+              <Skeleton
+                sx={{ height: 400 }}
+                animation="wave"
+                variant="rectangular"
+              />
+            ) : (
+              <CardMedia
+                component="img"
+                height="100%"
+                width="100%"
+                alt="card"
+                image={producto.image}
+              />
+            )}
 
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -88,8 +95,8 @@ const Product = () => {
             </CardContent>
           </CardActionArea>
         </Card>
-     
-      <div>
+
+        <div>
           <form onSubmit={handleSubmit} className="form">
             <div>
               <TextField
@@ -128,8 +135,8 @@ const Product = () => {
                 Guardar
               </Button>
               <Button onClick={deleteProduc} variant="outlined">
-            Eliminar
-          </Button>
+                Eliminar
+              </Button>
             </div>
           </form>
         </div>
