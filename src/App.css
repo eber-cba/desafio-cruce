@@ -1,8 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,800;1,400&display=swap");
-*{
+* {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+ 
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #dfdfdf; /*//Color de fondo*/
+}
+::-webkit-scrollbar-track {
+   
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
   
+  background-color: #cfcfcf;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #ff8e32;
+  width: 10px;
+  height: 10px;
+  border: 6px;
+}
+::-webkit-scrollbar-track-piece:start {
+  width: 10px;
+  height: 10px;
+  border: 2px;
+  background: #dfdfdf;
 }

@@ -1,4 +1,3 @@
-import Input from "@mui/material/Input";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -7,8 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { gsap } from "gsap";
 import { useDispatch } from "react-redux";
 import { useInput } from "../../Hook/useInput";
 import { createProduct } from "../../redux/Products";
@@ -16,20 +15,48 @@ import { useSnackbar } from "notistack";
 
 import "./CreateProduct.css";
 export default function CreateProduct() {
+  //alerta-estado
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  //estados
   const [button, setButton] = useState(false);
   const [inputError, setInputError] = useState(false);
-  const dispatch = useDispatch();
 
+  //Efectos
+  const Timeline = gsap.timeline({
+    defaults: { duration: 1.1, opacity: 0  },
+  });
+
+  useEffect(() => {
+    const labelCreatufunko = document.querySelectorAll(".labelCreatufunko");
+    const Card = document.querySelectorAll(".Card");
+    const name = document.querySelectorAll(".name");
+    const price = document.querySelectorAll(".price");
+    const image = document.querySelectorAll(".image");
+    const botonGuardar = document.querySelectorAll(".botonGuardar");
+    const botonVolver = document.querySelectorAll(".botonVolver");
+    Timeline.from(labelCreatufunko, { y: -300 })
+     .from(Card, { x: -200 },"-=0.3")
+      .from(name, { x: 200 })
+      .from(price, { x: 200 },"-=0.6")
+      .from(image, { x: 200 },"-=0.7")
+      .from(botonGuardar, { y: 200},"-=1.3")
+      .from(botonVolver, { y: 200},"-=1")
+  }, []);
+
+  //
+  const dispatch = useDispatch();
+  //
   const name = useInput();
   const price = useInput();
   const image = useInput();
-
+  //
   let form = {
     name: name.value,
     price: parseInt(price.value),
     image: image.value,
   };
+
+  //configuracion de alertas
   const messageErrorName =
     "Por favor ingrese correctamente el nombre del producto";
   const messageErrorPrice = "Por favor ingrese solamente NUMEROS";
@@ -51,6 +78,7 @@ export default function CreateProduct() {
       variant: "warning",
     });
   };
+  // validaciones
   let regexName = new RegExp(/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/);
   const valid = (e) => {
     let value = e.target.value;
@@ -79,14 +107,12 @@ export default function CreateProduct() {
       setButton(false);
     }
   };
-console.log("FORM",form)
+  // submitPost
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.name || !form.price || !form.image) {
       mensajeAdvertencia();
-    } 
-    else {
-      
+    } else {
       dispatch(
         createProduct({
           form: form,
@@ -100,8 +126,11 @@ console.log("FORM",form)
 
   return (
     <div className="padreCreateProduct">
+      <div className="contenedorLabel">
+        <label className="labelCreatufunko">¡CREA TU FUNKO!</label>
+      </div>
       <div className="contenedorGridCreateProduct">
-        <Card style={{ height: "100%" }}>
+        <Card className="Card" style={{ height: "100%" }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -125,11 +154,11 @@ console.log("FORM",form)
             </CardContent>
           </CardActionArea>
         </Card>
-        <div>
+        <div className="formCreateProduct">
           <form onSubmit={handleSubmit} className="form">
-            <div>
+            <div className="name">
               <TextField
-                label="Name"
+                label="Nombre"
                 name="name"
                 id="standard-basic"
                 variant="standard"
@@ -137,7 +166,7 @@ console.log("FORM",form)
                 {...name}
               />
             </div>
-            <div>
+            <div className="price">
               <TextField
                 id="filled-start-adornment"
                 InputProps={{
@@ -152,7 +181,7 @@ console.log("FORM",form)
                 {...price}
               ></TextField>
             </div>
-            <div>
+            <div className="image">
               <TextField
                 id="standard-basic"
                 label="Imagen"
@@ -162,8 +191,16 @@ console.log("FORM",form)
               />
             </div>
             <div>
-              <Button disabled={button} type="submit" variant="outlined">
+              <Button
+                className="botonGuardar"
+                disabled={button}
+                type="submit"
+                variant="outlined"
+              >
                 Guardar
+              </Button>
+              <Button className="botonVolver" variant="outlined">
+                Volver
               </Button>
             </div>
           </form>

@@ -6,22 +6,25 @@ import { CardActionArea } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as Scroll from "react-scroll";
-import { animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
+import IconButton from "@mui/material/IconButton";
 import "./Cards.css";
 import Skeleton from "@mui/material/Skeleton";
 import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
+
+import Button from "@mui/material/Button";
+import { useDispatch } from "react-redux";
 
 export default function Cards() {
   var scroll = Scroll.animateScroll;
   const [post, setPost] = useState([]);
   const [number, setNumber] = useState(1); // No of pages
   const [postPerPage] = useState(9);
-
+  const dispatch = useDispatch();
   const scrollTop = () => {
     scroll.scrollToTop();
   };
-
+  
   const lastPost = number * postPerPage;
   const firstPost = lastPost - postPerPage;
   const currentPost = post.slice(firstPost, lastPost);
@@ -50,21 +53,22 @@ export default function Cards() {
     }
   };
   const flechaHaciaLaDerecha = () => {
-    if (currentPost.length === 0 || currentPost.length === 1) {
-      setNumber(number);
+    if (number - 1 === 0) {
+      setNumber(number - 1);
     } else {
       setNumber(number + 1);
     }
   };
-  console.log("currentPost", currentPost);
-  console.log("number", number);
+
+  //
+
   return (
     <div className="padreGrid">
       <div className="scroll">
         <img onClick={scrollTop} src="/subir.svg" />
       </div>
       <div className="CardGrid">
-        {currentPost ? (
+        {post && currentPost.length != 0 ? (
           currentPost.map((product, i) => {
             return (
               <div key={i}>
@@ -95,29 +99,25 @@ export default function Cards() {
                     </CardContent>
                   </CardActionArea>
                   <div className="divCarrito">
-                    <img
-                      src="/carrito.svg"
-                      height="70px"
-                      width="50px"
-                      alt="carrito"
-                    />
+                    <Tooltip title="Agregar">
+                      <IconButton aria-label="upload picture" component="span">
+                        <img
+                          src="/carrito.svg"
+                          height="70px"
+                          width="50px"
+                          alt="carrito"
+                        />
+                      </IconButton>
+                    </Tooltip>
                   </div>
                 </Card>
               </div>
             );
           })
         ) : (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: "320px",
-            }}
-          >
+          <div className="circularProgress">
             <CircularProgress />
-            <h1>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
-          </Box>
+          </div>
         )}
       </div>
 

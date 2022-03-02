@@ -32,11 +32,18 @@
   
  
 }
-
+.circularProgress{
+  display: flex;
+  justify-content: center;
+ align-items: center;
+ margin-left: 35rem;
+ margin-top: 8rem;
+}
 .scroll {
   position: fixed;
   z-index: 3;
-  margin: 10% 0 0 85%;
+  margin: 0 0 0 85%;
+  cursor: pointer;
 }
 .botonFlecha {
   border-radius: 20px;

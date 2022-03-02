@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "@mui/material/Link";
-import Select from "@mui/material/Select";
+
 import "./Header.css";
 export default function Header() {
   return (
@@ -8,32 +8,36 @@ export default function Header() {
       <div className="contenedor">
         <div className="divLinks">
           <Link href="#" underline="none">
-            Inicio
+            <span className="botonesGris">Inicio</span>
+          </Link>
+          <span>/</span>
+          <Link className="botonesGris" href="#" underline="none">
+            <span className="botonesGris">Juguetes</span>
           </Link>
           <span>/</span>
           <Link href="#" underline="none">
-            Juguetes
-          </Link>
-          <span>/</span>
-          <Link href="#" underline="none">
-            Funko Pop
+            <span className="labelFunkoPop">Funko Pop</span>
           </Link>
         </div>
         <div className="divFiltrar">
-          <label className="labelFiltrar">Filtrar</label>
+          <label className="labelFiltrar">Filtrar {""}</label>
+
+          <img src="/flechitaAbajo.svg" />
         </div>
         <div className="divOrdenarPor">
-        <select className="ordenarPor" defaultValue={'DEFAULT'} >
-        <option value="DEFAULT" disabled>Ordenar por</option>
-        <option value="1">Mr</option>
-        <option value="2">Mrs</option>
-        <option value="3">Ms</option>
-        <option value="4">Miss</option>
-        <option value="5">Dr</option>
-      </select>
+          <select className="ordenarPor" defaultValue={"DEFAULT"}>
+            <option value="DEFAULT" disabled>
+              Ordenar por
+            </option>
+            <option value="1">Menor precio</option>
+            <option value="2">Mrs</option>
+            <option value="3">Ms</option>
+            <option value="4">Miss</option>
+            <option value="5">Dr</option>
+          </select>
         </div>
         <div className="contenedor-portada">
-          <img src="/portada.png" alt="portada" className="imgPortada"/>
+          <img src="/portada.png" alt="portada" className="imgPortada" />
         </div>
       </div>
     </div>

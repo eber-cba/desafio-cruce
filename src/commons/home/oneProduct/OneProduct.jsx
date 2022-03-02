@@ -34,7 +34,7 @@ const Product = () => {
     dispatch(getProduct({ Product }))
       .then(({ payload }) => payload)
       .catch((err) => console.log(err));
-  }, [producto]);
+  }, []);
 
   const name = CustomHook("Nombre", producto.name);
   const price = CustomHook("price", producto.price);
@@ -51,6 +51,7 @@ const Product = () => {
       })
     )
       .then(alert("se guardo bien esperemos.."))
+      .then(  dispatch(getProduct({ Product })))
       .catch((error) => console.log(error));
   };
   const deleteProduc = (e) => {
@@ -130,12 +131,15 @@ const Product = () => {
                 {...image}
               />
             </div>
-            <div>
+            <div className="botones">
               <Button type="submit" variant="outlined">
                 Guardar
               </Button>
               <Button onClick={deleteProduc} variant="outlined">
                 Eliminar
+              </Button>
+              <Button onClick={navigate("/")} >
+                Volver
               </Button>
             </div>
           </form>
