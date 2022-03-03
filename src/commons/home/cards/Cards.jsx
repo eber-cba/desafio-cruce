@@ -91,7 +91,7 @@ export default function Cards() {
                         Funko POP | {product.name}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                       6 coutos sin interes de
+                       6 coutas sin interes de
                       </Typography>
                       <Typography variant="body1" >
                        <b>$442</b>

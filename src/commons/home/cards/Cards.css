@@ -86,19 +86,25 @@
     grid-template-columns: 100%;
     grid-template-rows: repeat(auto-fit);
     width: 100%;
-    padding: 3%;
+    padding: 30% 0 0 2px;
     margin: 0;
   }
 
   .card-content {
-    left: 4rem;
+    left: 3rem;
     position: relative;
     width: 50%;
-    margin-left: 7rem;
+    margin-left: 35%;
   }
   .CardImage {
-    max-width: 35%;
-    position: absolute;
+    max-width: 44%;
+    max-height: 60%;
+   
+     position: absolute;
+  }
+  .scroll{
+    margin: 40% 0 0 35%;
+
   }
 }
 

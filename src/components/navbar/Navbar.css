@@ -10,3 +10,12 @@
  justify-content: space-between;
  align-items: center;
 }
+
+@media (max-width: 700px){
+    .img-navbar{
+        display: flex;
+        width:70%;
+        justify-content: space-around;
+
+    }
+}
