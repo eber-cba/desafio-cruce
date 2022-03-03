@@ -51,15 +51,8 @@ export default function Cards() {
       setNumber(number - 1);
     }
   };
-  const flechaHaciaLaDerecha = () => {
-    if (number - 1 === 0) {
-      setNumber(number - 1);
-    } else {
-      setNumber(number + 1);
-    }
-  };
-
-  //
+  
+ 
 
   return (
     <div className="padreGrid">
@@ -146,7 +139,7 @@ export default function Cards() {
             </div>
           );
         })}
-        <button className="botonFlecha" onClick={flechaHaciaLaDerecha}>
+        <button className="botonFlecha" onClick={()=> setNumber(number + 1)}>
           <img
             className="imgFlecha"
             src="/flechaderecha.svg"
