@@ -77,12 +77,18 @@ export default function Cards() {
                 >
                   <CardActionArea className="cardActionArea">
                     <Link to={`/products/${product.id}`}>
-                      <img
-                        className="CardImage"
-                        component="img"
-                        alt="cards"
-                        src={product.image}
-                      />
+                    {!product.image?
+                    <Skeleton
+                    sx={{ height: 400 }}
+                    animation="wave"
+                    variant="rectangular"
+                  />:<img
+                  className="CardImage"
+                  component="img"
+                  alt="cards"
+                  src={product.image}
+                />}
+                      
                     </Link>
                     <CardContent className="card-content">
                       <label className="labelFunko"> Funko </label>
