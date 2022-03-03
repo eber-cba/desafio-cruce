@@ -17,20 +17,21 @@ import {
   deleteProduct,
   getProduct,
 } from "../../../redux/Products";
-import { useNavigate } from "react-router-dom";
+
 import Skeleton from "@mui/material/Skeleton";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Product = () => {
-  const [state, setState] = useState({});
-
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const producto = useSelector((state) => state.products);
 
   const Product = useParams().id;
-
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getProduct({ Product }))
       .then(({ payload }) => payload)
@@ -40,6 +41,56 @@ const Product = () => {
   const name = CustomHook("Nombre", producto.name);
   const price = CustomHook("price", producto.price);
   const image = CustomHook("image", producto.image);
+
+  const [button, setButton] = useState(false);
+  const [inputError, setInputError] = useState(false);
+
+  //configuracion de alertas
+  const messageErrorName =
+    "Por favor ingrese correctamente el nombre del producto";
+  const messageErrorPrice = "Por favor ingrese solamente NUMEROS";
+  const messageAdvertencia =
+    "Por favor rellene todos los campos antes de continuar";
+
+  const mensajeErrorNombre = () => {
+    enqueueSnackbar(messageErrorName, {
+      variant: "error",
+    });
+  };
+  const mensajeErrorPrice = () => {
+    enqueueSnackbar(messageErrorPrice, {
+      variant: "error",
+    });
+  };
+  // validaciones
+  let regexName = new RegExp(/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/);
+  const valid = (e) => {
+    let value = e.target.value;
+    if (!regexName.test(value) || /^\s/.test(value)) {
+      mensajeErrorNombre();
+      setButton(true);
+      setInputError(true);
+    } else {
+      closeSnackbar();
+      setInputError(false);
+
+      setButton(false);
+    }
+  };
+  let regexprecio = /^[0-9]*$/;
+  const validPrice = (e) => {
+    let value = e.target.value;
+    if (!regexprecio.test(value) || /^\s/.test(value)) {
+      mensajeErrorPrice();
+      setButton(true);
+      setInputError(true);
+    } else {
+      closeSnackbar();
+      setInputError(false);
+
+      setButton(false);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,8 +102,14 @@ const Product = () => {
         image: image.value,
       })
     )
-      .then(alert("se guardo bien esperemos.."))
-      .then(  dispatch(getProduct({ Product })))
+      .then(
+        Swal.fire({
+          icon: "success",
+          title: "Producto Editado!",
+          text: "Tu producto fue editado correctamente (:",
+        })
+      )
+      .then(dispatch(getProduct({ Product })))
       .catch((error) => console.log(error));
   };
   const deleteProduc = (e) => {
@@ -62,8 +119,14 @@ const Product = () => {
         id: producto.id,
       })
     )
-      .then(alert("borrado."))
-      
+      .then(
+        Swal.fire({
+          icon: "success",
+          title: "Producto Elimanado!",
+          text: "Tu producto fue eliminado correctamente (:",
+        }).then(() => navigate("/"))
+      )
+
       .catch((error) => console.log(error));
   };
   return (
@@ -106,6 +169,7 @@ const Product = () => {
                 name="name"
                 id="standard-basic"
                 variant="standard"
+                onKeyUp={valid}
                 {...name}
               />
             </div>
@@ -120,6 +184,7 @@ const Product = () => {
                 label="Precio"
                 variant="standard"
                 name="price"
+                onKeyUp={validPrice}
                 {...price}
               ></TextField>
             </div>
@@ -133,15 +198,18 @@ const Product = () => {
               />
             </div>
             <div className="botones">
-              <Button type="submit" variant="outlined">
+              <Button type="submit" variant="outlined" disabled={button}>
                 Guardar
               </Button>
               <Button onClick={deleteProduc} variant="outlined">
                 Eliminar
               </Button>
-              <Button  >
-                Volver
-              </Button>
+              <Link
+                style={{ color: "inherit", textDecoration: "inherit" }}
+                to={"/"}
+              >
+                <Button style={{ color: "black",fontWeight:"bold" }}>Volver</Button>
+              </Link>
             </div>
           </form>
         </div>

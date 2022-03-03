@@ -6,13 +6,12 @@ import { CardActionArea } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as Scroll from "react-scroll";
-import IconButton from "@mui/material/IconButton";
+
 import "./Cards.css";
 import Skeleton from "@mui/material/Skeleton";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tooltip from "@mui/material/Tooltip";
 
-import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 
 export default function Cards() {
@@ -91,29 +90,24 @@ export default function Cards() {
                         Funko POP | {product.name}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                       6 coutas sin interes de
+                        6 coutas sin interes de
                       </Typography>
-                      <Typography variant="body1" >
-                       <b>$442</b>
+                      <Typography variant="body1">
+                        <b>$442</b>
                       </Typography>
-                      <label>
-                        Final: ${product.price}
-                      </label>
+                      <label>Final: ${product.price}</label>
                       <div className="divCarrito">
-                    <Tooltip title="Agregar">
-                   
-                        <img
-                          src="/carrito.svg"
-                          height="70px"
-                          width="50px"
-                          alt="carrito"
-                        />
-                   
-                    </Tooltip>
-                  </div>
+                        <Tooltip title="Agregar">
+                          <img
+                            src="/carrito.svg"
+                            height="70px"
+                            width="50px"
+                            alt="carrito"
+                          />
+                        </Tooltip>
+                      </div>
                     </CardContent>
                   </CardActionArea>
-                 
                 </Card>
               </div>
             );
