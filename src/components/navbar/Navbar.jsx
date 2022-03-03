@@ -19,7 +19,9 @@ export default function Navbar() {
     <div className="divPadreNavbar">
       <div className="contenedor-navbar">
         <div className="img-navbar">
+          <Link to="/"> 
           <img src="/img-navbar.svg" />
+          </Link>
         </div>
         <div>
           <Button

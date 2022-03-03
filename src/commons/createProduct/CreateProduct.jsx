@@ -8,7 +8,7 @@ import { CardActionArea } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Input from '@mui/material/Input';
 import { gsap } from "gsap";
 import { useDispatch } from "react-redux";
 import { useInput } from "../../Hook/useInput";
@@ -23,7 +23,7 @@ export default function CreateProduct() {
   //estados
   const [button, setButton] = useState(false);
   const [inputError, setInputError] = useState(false);
-  const [setForm]=useState("seeet")
+  
   //Efectos
   const Timeline = gsap.timeline({
     defaults: { duration: 1.1, opacity: 0 },
@@ -37,7 +37,9 @@ export default function CreateProduct() {
     const image = document.querySelectorAll(".image");
     const botonGuardar = document.querySelectorAll(".botonGuardar");
     const botonVolver = document.querySelectorAll(".botonVolver");
-    Timeline.from(labelCreatufunko, { y: -300 })
+
+    Timeline
+      .from(labelCreatufunko, { y: -300 })
       .from(Card, { x: -200 }, "-=0.3")
       .from(name, { x: 200 })
       .from(price, { x: 200 }, "-=0.6")

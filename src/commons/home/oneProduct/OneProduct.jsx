@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import { CardActionArea } from "@mui/material";
 import "./Product.css";
 import Button from "@mui/material/Button";
+import Input from '@mui/material/Input';
+
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useDispatch, useSelector } from "react-redux";
@@ -152,10 +154,10 @@ const Product = () => {
 
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                nombre: {producto.name}
+                Nombre: {producto.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                precio $: {producto.price}
+                Precio $: {producto.price}
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -181,7 +183,7 @@ const Product = () => {
                     <InputAdornment position="start">$</InputAdornment>
                   ),
                 }}
-                label="Precio"
+              
                 variant="standard"
                 name="price"
                 onKeyUp={validPrice}
