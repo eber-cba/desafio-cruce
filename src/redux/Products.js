@@ -27,7 +27,7 @@ export const updateProduct = createAsyncThunk(
 );
 export const deleteProduct = createAsyncThunk(
   "DELETE_PRODUCT",
-  ({ id, form }) => {
+  ({ id }) => {
     return axios
       .delete(`http://localhost:8080/api/products/${id}`)
       .then((res) => res.data)
