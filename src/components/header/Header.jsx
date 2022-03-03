@@ -20,10 +20,10 @@ export default function Header() {
           </Link>
         </div>
         <div className="divFiltrar">
-        <img id="iconFiltrar" src="/iconFiltrar.svg"/>
+        <img alt="filtrar" id="iconFiltrar" src="/iconFiltrar.svg"/>
           <button className="labelFiltrar">  <label id="labelfiltrar">Filtrar {""}</label></button>
 
-          <img id="flechitaAbajoFiltrar" src="/flechitaAbajo.svg" />
+          <img alt="filtrar" id="flechitaAbajoFiltrar" src="/flechitaAbajo.svg" />
         </div>
         <div className="divOrdenarPor">
           <select className="ordenarPor" defaultValue={"DEFAULT"}>

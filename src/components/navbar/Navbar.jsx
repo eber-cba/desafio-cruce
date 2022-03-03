@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import SobreMiModal from "../../commons/modal/Modal";
 import "./Navbar.css";
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,8 +20,8 @@ export default function Navbar() {
     <div className="divPadreNavbar">
       <div className="contenedor-navbar">
         <div className="img-navbar">
-          <Link to="/"> 
-          <img src="/img-navbar.svg" />
+          <Link to="/">
+            <img alt="navbar" src="/img-navbar.svg" />
           </Link>
         </div>
         <div>
@@ -49,6 +50,11 @@ export default function Navbar() {
             >
               Crear Producto
             </MenuItem>
+        
+            <MenuItem onClick={handleClose}></MenuItem>
+            <SobreMiModal/>
+          
+
           </Menu>
         </div>
       </div>

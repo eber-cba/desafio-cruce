@@ -8,7 +8,6 @@ import { CardActionArea } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Input from '@mui/material/Input';
 import { gsap } from "gsap";
 import { useDispatch } from "react-redux";
 import { useInput } from "../../Hook/useInput";

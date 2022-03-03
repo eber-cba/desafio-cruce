@@ -12,14 +12,14 @@ import Skeleton from "@mui/material/Skeleton";
 import CircularProgress from "@mui/material/CircularProgress";
 import Tooltip from "@mui/material/Tooltip";
 
-import { useDispatch } from "react-redux";
+
 
 export default function Cards() {
   var scroll = Scroll.animateScroll;
   const [post, setPost] = useState([]);
   const [number, setNumber] = useState(1); // No of pages
   const [postPerPage] = useState(9);
-  const dispatch = useDispatch();
+  
   const scrollTop = () => {
     scroll.scrollToTop();
   };
@@ -67,7 +67,7 @@ export default function Cards() {
         <img onClick={scrollTop} src="/subir.svg" />
       </div>
       <div className="CardGrid">
-        {post && currentPost.length != 0 ? (
+        {post && currentPost.length !== 0 ? (
           currentPost.map((product, i) => {
             return (
               <div key={i}>

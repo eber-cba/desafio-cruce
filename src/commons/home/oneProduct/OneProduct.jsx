@@ -51,8 +51,7 @@ const Product = () => {
   const messageErrorName =
     "Por favor ingrese correctamente el nombre del producto";
   const messageErrorPrice = "Por favor ingrese solamente NUMEROS";
-  const messageAdvertencia =
-    "Por favor rellene todos los campos antes de continuar";
+  
 
   const mensajeErrorNombre = () => {
     enqueueSnackbar(messageErrorName, {
