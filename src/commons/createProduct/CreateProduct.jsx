@@ -7,23 +7,26 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { gsap } from "gsap";
 import { useDispatch } from "react-redux";
 import { useInput } from "../../Hook/useInput";
 import { createProduct } from "../../redux/Products";
 import { useSnackbar } from "notistack";
-
+import Swal from "sweetalert2";
 import "./CreateProduct.css";
+
 export default function CreateProduct() {
   //alerta-estado
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   //estados
   const [button, setButton] = useState(false);
   const [inputError, setInputError] = useState(false);
-
+  const [setForm]=useState("seeet")
   //Efectos
   const Timeline = gsap.timeline({
-    defaults: { duration: 1.1, opacity: 0  },
+    defaults: { duration: 1.1, opacity: 0 },
   });
 
   useEffect(() => {
@@ -35,16 +38,20 @@ export default function CreateProduct() {
     const botonGuardar = document.querySelectorAll(".botonGuardar");
     const botonVolver = document.querySelectorAll(".botonVolver");
     Timeline.from(labelCreatufunko, { y: -300 })
-     .from(Card, { x: -200 },"-=0.3")
+      .from(Card, { x: -200 }, "-=0.3")
       .from(name, { x: 200 })
-      .from(price, { x: 200 },"-=0.6")
-      .from(image, { x: 200 },"-=0.7")
-      .from(botonGuardar, { y: 200},"-=1.3")
-      .from(botonVolver, { y: 200},"-=1")
+      .from(price, { x: 200 }, "-=0.6")
+      .from(image, { x: 200 }, "-=0.7")
+      .from(botonGuardar, { y: 200 }, "-=1.3")
+      .from(botonVolver, { y: 200 }, "-=1");
   }, []);
+
+  // Alerta creacion de producto
 
   //
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   //
   const name = useInput();
   const price = useInput();
@@ -118,13 +125,20 @@ export default function CreateProduct() {
           form: form,
         })
       )
-        .then(alert("Producto creado"))
+      .then(
+        Swal.fire({
+          icon: "success",
+          title: "Producto creado!",
+          text: "Tu producto ah sido creado correctamente (:",
+        })
+      .then(()=>navigate("/"))
 
-        .catch((error) => console.log(error));
+      )
+       
     }
   };
 
-  return (
+   return (
     <div className="padreCreateProduct">
       <div className="contenedorLabel">
         <label className="labelCreatufunko">¡CREA TU FUNKO!</label>
@@ -199,7 +213,11 @@ export default function CreateProduct() {
               >
                 Guardar
               </Button>
-              <Button className="botonVolver" variant="outlined">
+              <Button
+               
+                className="botonVolver"
+                variant="outlined"
+              >
                 Volver
               </Button>
             </div>

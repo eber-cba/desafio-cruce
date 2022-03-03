@@ -19,6 +19,7 @@ import {
 } from "../../../redux/Products";
 import { useNavigate } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
+import Swal from 'sweetalert2'
 
 const Product = () => {
   const [state, setState] = useState({});
@@ -62,7 +63,7 @@ const Product = () => {
       })
     )
       .then(alert("borrado."))
-      .then(navigate("/"))
+      
       .catch((error) => console.log(error));
   };
   return (
@@ -138,7 +139,7 @@ const Product = () => {
               <Button onClick={deleteProduc} variant="outlined">
                 Eliminar
               </Button>
-              <Button onClick={navigate("/")} >
+              <Button  >
                 Volver
               </Button>
             </div>

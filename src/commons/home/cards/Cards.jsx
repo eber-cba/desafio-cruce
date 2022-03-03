@@ -24,7 +24,7 @@ export default function Cards() {
   const scrollTop = () => {
     scroll.scrollToTop();
   };
-  
+
   const lastPost = number * postPerPage;
   const firstPost = lastPost - postPerPage;
   const currentPost = post.slice(firstPost, lastPost);
@@ -86,30 +86,34 @@ export default function Cards() {
                       />
                     </Link>
                     <CardContent className="card-content">
-                      <label> Funko </label>
+                      <label className="labelFunko"> Funko </label>
                       <Typography gutterBottom variant="h5" component="div">
                         Funko POP | {product.name}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        5 cuotas de
+                       6 coutos sin interes de
                       </Typography>
-                      <Typography variant="body1" color="text.secondary">
-                        Precio: ${product.price}
+                      <Typography variant="body1" >
+                       <b>$442</b>
                       </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <div className="divCarrito">
+                      <label>
+                        Final: ${product.price}
+                      </label>
+                      <div className="divCarrito">
                     <Tooltip title="Agregar">
-                      <IconButton aria-label="upload picture" component="span">
+                   
                         <img
                           src="/carrito.svg"
                           height="70px"
                           width="50px"
                           alt="carrito"
                         />
-                      </IconButton>
+                   
                     </Tooltip>
                   </div>
+                    </CardContent>
+                  </CardActionArea>
+                 
                 </Card>
               </div>
             );
