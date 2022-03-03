@@ -213,13 +213,7 @@ export default function CreateProduct() {
               >
                 Guardar
               </Button>
-              <Button
-               
-                className="botonVolver"
-                variant="outlined"
-              >
-                Volver
-              </Button>
+              
             </div>
           </form>
         </div>

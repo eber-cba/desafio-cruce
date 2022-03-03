@@ -33,3 +33,13 @@
 .Card{
     width: 70%;
 }
+
+@media (max-width: 700px) {
+  .contenedorGridCreateProduct{
+    grid-template-columns: repeat(2, 50%); 
+
+  }
+  .Card{
+    width: 95%;
+}
+}

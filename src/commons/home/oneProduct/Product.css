@@ -18,3 +18,10 @@ body{
     display:flex;
     gap: 10px;
 }
+
+@media (max-width: 700px){
+    .divGridCard{
+        grid-template-columns: repeat(1, 90%);
+        grid-gap: 5px;
+    }
+}
